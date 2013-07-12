@@ -61,6 +61,5 @@ function createLogTable(divElm,logArr){
 		tbody.appendChild(tr);
 	}
 	table.appendChild(tbody);
-	console.log(table);
 	divElm.appendChild(table);
 }
