@@ -11,21 +11,29 @@ sub parse {
 	my ($self) = @_;
 	open my $fh, '<', $self->{filename}  or die $!;
 	my @lines = <$fh>;
-	return map{
+	my @result;
+	for(my $i = 0;$i <= $#lines;$i++){
 		# 区切りタブで分割し、それぞれさらにkeyと値に分割しハッシュに格納
+		my $line = $lines[$i];
 		my %logdata;
-		my @fields = split(/\t/,$_);
+		chomp($line);
+		my @fields = split(/\t/,$line);
 		foreach my $field(@fields){
+			my $value = "";
 			my @k_v = split(/:/,$field);
 			my $key = $k_v[0];
-			my $value = $k_v[1];
-			print "\n";
+			if($key eq "referer"){
+				$value = $k_v[1].':'.$k_v[2];
+			}else{
+				$value = $k_v[1];
+			} 
 			if($value ne '-'){
 				$logdata{$key} = $value;
 			}
 		}
-		$_ = bless \%logdata,'Log';
-	} @lines;
+		$result[$i]=(bless \%logdata,'Log');
+	}
+	return [@result];
 }
 
 1;
