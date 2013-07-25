@@ -29,6 +29,7 @@ sub path {
 }
 
 sub uri {
+	my ($self) = @_;
 	# TODO : http or https チェックする？
 	return 'http://'.$self->{host}.$self->{path};
 }
