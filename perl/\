@@ -14,9 +14,10 @@ sub group_by_user {
 	my %result;
 	foreach my $log (@logs){
 		my $user = $log->{user}||'guest';
-		push(@{%result->{$user}},$log);
+		%result->{$user} = [];
+		push(%result->{$user},$log);
 	}
-	return \%result;
+	return %result;
 }
 
 sub count_error {

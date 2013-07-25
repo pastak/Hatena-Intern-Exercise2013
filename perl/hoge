@@ -1,0 +1,40 @@
+$VAR1 = bless( {
+                 'logs' => [
+                             bless( {
+                                      'epoch' => '1372694390',
+                                      'status' => '200',
+                                      'referer' => 'http://www.hatena.ne.jp/',
+                                      'req' => 'GET /apache_pb.gif HTTP/1.0',
+                                      'user' => 'frank',
+                                      'size' => '2326',
+                                      'host' => '127.0.0.1'
+                                    }, 'Log' ),
+                             bless( {
+                                      'epoch' => '1372794390',
+                                      'status' => '200',
+                                      'referer' => 'http://b.hatena.ne.jp/hotentry',
+                                      'user' => 'john',
+                                      'size' => '1234',
+                                      'host' => '127.0.0.1',
+                                      'req' => 'GET /apache_pb.gif HTTP/1.0'
+                                    }, 'Log' ),
+                             bless( {
+                                      'size' => '9999',
+                                      'host' => '127.0.0.1',
+                                      'req' => 'GET /apache_pb.gif HTTP/1.0',
+                                      'status' => '503',
+                                      'epoch' => '1372894390',
+                                      'referer' => 'http://www.example.com/start.html'
+                                    }, 'Log' ),
+                             bless( {
+                                      'epoch' => '1372694390',
+                                      'status' => '500',
+                                      'referer' => 'http://www.hatena.ne.jp/',
+                                      'size' => '2326',
+                                      'user' => 'frank',
+                                      'host' => '127.0.0.1',
+                                      'req' => 'GET /apache_pb.gif HTTP/1.0'
+                                    }, 'Log' )
+                           ]
+               }, 'LogCounter' );
+total error size: 
