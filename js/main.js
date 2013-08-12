@@ -1,7 +1,7 @@
 // 課題 JS-1: 関数 `parseLTSVLog` を記述してください
 
 function parseLTSVLog(ltsv){
-	var line,feilds,field,ftmp,key,value;
+	var line,feilds,field,ftmp,splitPosition,key,value;
 	var re_arr = [];
 	var log_lines = ltsv.split(/\n/);
 	for(var i = 0;i < log_lines.length;i++){
@@ -10,23 +10,20 @@ function parseLTSVLog(ltsv){
 				//空行なら飛ばす
 				continue;
 		};
-		re_arr[i] = {
+		re_arr.push({
 			path : '',
 			reqtime_microsec : 0
-		};
+		});
 		feilds = line.split(/\t/);
 		for(var j = 0;j < feilds.length;j++){
 			feild = feilds[j];
-			ftmp = feild.split(/:/);
-			key = ftmp[0];
-			value = ftmp[1];
+			splitPosition = field.search ('\:');
+			key = field.substring (0, splitPosition);
+			value = field.substring (splitPosition + 1);
 			if(key === 'path'){
 				re_arr[i].path = value;
 			}else if(key === 'reqtime_microsec'){
 				re_arr[i].reqtime_microsec = value-0;
-			}else{
-				
-			}
 		}
 	}
 	return re_arr;
